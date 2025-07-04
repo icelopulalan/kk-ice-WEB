@@ -1,0 +1,649 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(270deg, #e926ff, #f042ff, #ffe5f1, #b757c6);
+  color: #333;
+  min-height: 100vh;
+   background-size: 800% 800%;
+  animation: gradientMove 15s ease infinite;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+
+header {
+  background-color: #e6b4f1;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap : 30px;
+}
+
+nav ul li {
+  margin: 0 20px;
+  position : relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  position: relative;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.45);
+  color: #a8edea;
+}
+
+nav ul li a::after {
+  content: '';
+  position : absolute;
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #f9ff43;
+  left : 0;
+  bottom : -px;
+  transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Highlight menu aktif */
+nav ul li a.active {
+  color: #ffffff;
+}
+
+nav ul li a.active::after {
+  width: 100%;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px 20px 100px 20px;
+  padding-bottom : 100 px;
+  min-height: calc(100vh - 120px);
+}
+
+main h1 {
+  font-size: 2.2em;
+  margin : 10px 0;
+  margin-top : 10px;
+  margin-bottom: 10px;
+
+}
+
+main p {
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid #ddd;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* ===== Typewriter untuk Div About ===== */
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid #ffd700;
+  white-space: nowrap;
+  letter-spacing: .05em;
+  animation: typing 4s steps(60, end) forwards, blink .8s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+  to { border-color: #ffd700 }
+}
+
+/* ===== Fade-in untuk Judul H1 ===== */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== Fade-in untuk Judul H1 ===== */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== Tampilan About ===== */
+.about-content {
+  max-width: 750px;
+  margin: 20px auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  line-height: 1.8;
+  color: white;
+  text-align: left;
+  font-size: 1.1em;
+}
+
+.about-content p {
+  margin-bottom: 10px;
+}
+
+
+
+/* ===== Skills Container ===== */
+.skills-container {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  margin : 10px 0;
+  margin-top: -100px;
+   margin-bottom: 50px;
+  justify-items: center;
+  perspective: 1000px;
+}
+
+.skill-card {
+  width: 160px;
+  height: 180px;
+  background-color: transparent;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.skill-card:hover {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.card-front:hover, .card-back:hover {
+  box-shadow: 0 0 20px #ffd700;
+}
+
+/* Front */
+.card-front i {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.card-front p {
+  color: white;
+  font-weight: 600;
+}
+
+/* Back */
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-back p {
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 80%;
+  height: 10px;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* ===== Hobby Section Flip Card ===== */
+.hobby-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+.hobby-card {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.hobby-card:hover {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Front */
+.card-front i {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.card-front p {
+  color: white;
+  font-weight: 600;
+}
+
+/* Back */
+.card-back {
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.5s ease;
+}
+
+
+
+footer {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.4);
+}
+
+/* ===== Kontak ===== */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.contact-icon {
+  font-size: 40px;
+  color: black;
+  padding: 20px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.contact-icon:hover {
+  transform: scale(1.2);
+  color: #ffd700;
+}
+
+
+.contact-icons i {
+  margin-right: 10px;
+  color: #333;
+}
+
+/* Icon Slide dari Kiri */
+.contact-icon:nth-child(odd) {
+  animation: fadeSlideLeftBounce 0.8s ease forwards;
+}
+
+/* Icon Slide dari Kanan */
+.contact-icon:nth-child(even) {
+  animation: fadeSlideRightBounce 0.8s ease forwards;
+}
+
+/* Delay agar muncul satu per satu */
+.contact-icon:nth-child(1) { animation-delay: 0.2s; }
+.contact-icon:nth-child(2) { animation-delay: 0.4s; }
+.contact-icon:nth-child(3) { animation-delay: 0.6s; }
+contact-icon:nth-child(4) { animation-delay: 0.8s; }
+.contact-icon:nth-child(5) { animation-delay: 1s; }
+.contact-icon:nth-child(6) { animation-delay: 1.2s; }
+
+.typewriter-text {
+  overflow: hidden;
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), blink .75s step-end infinite;
+}
+
+.about-content h2 {
+  margin-top: 20px;
+  color: #8ad6bf;
+  font-size: 1.5em;
+  border-bottom: 2px solid #ffd700;
+  padding-bottom: 5px;
+}
+
+.education-list {
+  margin-top: 10px;
+  padding-left: 20px;
+  color: white;
+}
+
+.education-list li {
+  margin-bottom: 8px;
+  list-style: disc;
+  line-height: 1.6;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  main {
+    padding: 20px;
+  }
+}
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark header {
+  background-color: #1e1e1e;
+}
+
+body.dark nav ul li a {
+  color: #eee;
+}
+
+body.dark nav ul li a::after {
+  background: #eee;
+}
+
+body.dark footer {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark .skills li {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+/* ===== Animasi Masuk ===== */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.6s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.8s;
+}
+
+.animate-delay-5 {
+  animation-delay: 1s;
+}
+
+.animate-delay-6 {
+  animation-delay: 1.2s;
+}
+
+.animate-delay-7 {
+  animation-delay: 1.4s;
+}
+
+/* ===== Animasi Masuk dan Keluar ===== */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ===== Efek Masuk di Halaman Profil ===== */
+@keyframes zoomFadeSlide {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.profile-container {
+  opacity: 0;
+  animation: zoomFadeSlide 1s ease forwards;
+}
+
+.profile-container-delay {
+  opacity: 0;
+  animation: zoomFadeSlide 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+
+
+/* ===== Keyframe Efek Slide + Bounce ===== */
+@keyframes fadeSlideLeftBounce {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideRightBounce {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+/* ===== Efek Masuk Gambar Profil ===== */
+@keyframes imageEnter {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(10px) scale(1.05);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+
+
+/* ===== Efek Slide dari Kiri ===== */
+@keyframes fadeSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card-wrapper {
+  opacity: 0;
+  animation: fadeSlideLeft 0.8s ease forwards;
+}
+
+/* Delay agar card muncul satu per satu */
+.card-wrapper:nth-child(1) { animation-delay: 0.2s; }
+.card-wrapper:nth-child(2) { animation-delay: 0.4s; }
+.card-wrapper:nth-child(3) { animation-delay: 0.6s; }
+.card-wrapper:nth-child(4) { animation-delay: 0.8s; }
+.card-wrapper:nth-child(5) { animation-delay: 1s; }
+
+/* ===== Efek Fade-in ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
